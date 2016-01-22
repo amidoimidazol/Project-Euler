@@ -11,8 +11,6 @@ using namespace std;
 class P {
 	/*
 	Problem  -
-	Author: Peter Forgacs <peter.forgacs3@gmail.com>
-	Date:
 
 	Problem Description:
 
@@ -26,7 +24,75 @@ public:
 	}
 };
 
-class P9 {
+class P10 {
+	/*
+	Problem 10 - Summation of Primes
+
+	Problem Description:
+
+	The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+	Find the sum of all the primes below two million.
+
+	Possible Improvements:
+	
+	Sieve of Eratosthenes
+	https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+	*/
+public:
+	const long int p10_MAX = 2000000;
+	P10() {
+		sieve_of_eratosthenes();
+	}
+
+	void brute_force() {
+		long long int result = 0;
+		int i = 2;
+		while (i < p10_MAX) {
+			int j = 2;
+			while (j <= i) {
+				if (i % j == 0 && i != j) { break; }
+				if (j == i) { result += i; }
+				++j;
+			}
+			i == 2 ? ++i : i += 2;
+		}
+		cout << result << endl;
+	}
+
+	void sieve_of_eratosthenes() {
+		int max = 2000000;
+		unsigned long long int solution = 0;
+
+		// Create an array that can hold 2000000 items
+		int* array = new int[max];
+
+		array[0] = array[1] = 0;
+		
+		// Fill in every index of the array with true
+		for (int i = 2; i<max; i++)
+			array[i] = 1;
+		
+		// Take the square of every number and set it to 0 
+		for (int i = 2; i <= sqrt(max); i++) {
+			if (array[i] == 1) {
+				for (int j = i*i; j<max; j += i)
+					array[j] = 0;
+			}
+		}
+
+		// The indexes that contain 1 are primes
+		for (int i = 0; i<max; i++) {
+			if (array[i] == 1)
+				solution += i;
+		}
+		cout << solution << endl;
+		delete array;
+	}
+
+};
+
+class P09 {
 	/*
 	Problem 9 - Special Pythagorean triplet
 
@@ -44,7 +110,7 @@ class P9 {
 
 	*/
 public:
-	P9() {
+	P09() {
 		int c = 1000;
 		// Rounded
 		int max_c = 1000 - 1;
@@ -71,7 +137,7 @@ public:
 	}
 };
 
-class P8 {
+class P08 {
 	/*
 	Problem 8 - Largest Product in a series
 
@@ -108,7 +174,7 @@ class P8 {
 public:
 	const int p8_ADJECENT_NUM = 13 - 1;
 
-	P8() {
+	P08() {
 		// Reading in the number from a file
 		vector<int>numbers;
 		string line;
@@ -145,7 +211,7 @@ public:
 	}
 };
 
-class P7 {
+class P07 {
 	/*
 	Problem 7 - 10001st prime
 
@@ -157,37 +223,32 @@ class P7 {
 	Increment j by two because even numbers cant be primes.
 	*/
 public:
-	P7(){
+	P07(){
 
-	clock_t runtime = clock();
-	int last_prime;
-	int treshold = 10001;
-	int primes_found = 0;
+		int last_prime;
+		int treshold = 10001;
+		int primes_found = 0;
 
-	int i = 2;
-	while (primes_found != treshold) {
-		int j = 2;
-		while (j <= i) {
-			if (i%j == 0 && i != j) {
-				//std::cout << "Not a prime " << i << std::endl;
-				break;
+		int i = 2;
+		while (primes_found != treshold) {
+			int j = 2;
+			while (j <= i) {
+				if (i%j == 0 && i != j) {
+					break;
+				}
+				else if (j == i) {
+					++primes_found;
+					last_prime = i;
+				}
+
+				j >= 3 ? j += 2 : ++j;
 			}
-			else if (j == i) {
-				++primes_found;
-				last_prime = i;
-			}
-
-			j >= 3 ? j += 2 : ++j;
+			++i;
 		}
-		++i;
-	}
-	std::cout << "Prime " << last_prime << std::endl;
-	printf("Full runtime: %.2fs\n", (double)(clock() - runtime) / CLOCKS_PER_SEC);
-	system("pause");
 	}
 };
 
-class P6 {
+class P06 {
 	/*
 	Problem 6  - Sum Square Difference
 	Date: 2016
@@ -207,17 +268,16 @@ class P6 {
 
 	*/
 public:
-	P6() {
+	P06() {
 		float sum_of_squares = get_sum_of_squares(100);
 		float square_of_sum = get_square_of_sum(100);
 		int result = square_of_sum - sum_of_squares;
 		cout << "sum of squares " << sum_of_squares << endl;
 		cout << "square of sum " << square_of_sum << endl;
 		cout << "result " << result << endl;
-		system("pause");
 	}
 
-	float P6::get_sum_of_squares(int num) {
+	float P06::get_sum_of_squares(int num) {
 		float val = 0;
 		for (num; num != 0; num--) {
 			val += pow(num, 2);
@@ -225,7 +285,7 @@ public:
 		return val;
 	}
 
-	float P6::get_square_of_sum(int num) {
+	float P06::get_square_of_sum(int num) {
 		float val = 0;
 		for (int i = 1; i <= num; i++) {
 			val += i;
@@ -236,11 +296,9 @@ public:
 
 };
 
-class P5 {
+class P05 {
 	/*
-	Problem  -
-	Author: Peter Forgacs <peter.forgacs3@gmail.com>
-	Date:
+	Problem 5 -
 
 	Problem Description:
 
@@ -249,16 +307,14 @@ class P5 {
 
 	*/
 public:
-	P5() {
+	P05() {
 
 	}
 };
 
-class P4 {
+class P04 {
 	/*
-	Problem  -
-	Author: Peter Forgacs <peter.forgacs3@gmail.com>
-	Date:
+	Problem 4 -
 
 	Problem Description:
 
@@ -267,12 +323,12 @@ class P4 {
 
 	*/
 public:
-	P4() {
+	P04() {
 
 	}
 };
 
-class P3 {
+class P03 {
 	/*
 	Problem 3 - Largest Prime Factor
 
@@ -285,7 +341,7 @@ class P3 {
 
 	*/
 public:
-	P3() {
+	P03() {
 		unsigned long long int num = 600851475143;
 		std::vector<int> prime_factors;
 
@@ -316,11 +372,9 @@ public:
 	}
 };
 
-class P2 {
+class P02 {
 	/*
-	Problem  -
-	Author: Peter Forgacs <peter.forgacs3@gmail.com>
-	Date:
+	Problem 2 -
 
 	Problem Description:
 
@@ -329,16 +383,14 @@ class P2 {
 
 	*/
 public:
-	P2() {
+	P02() {
 
 	}
 };
 
-class P1 {
+class P01 {
 	/*
-	Problem  -
-	Author: Peter Forgacs <peter.forgacs3@gmail.com>
-	Date:
+	Problem 1 -
 
 	Problem Description:
 
@@ -347,7 +399,7 @@ class P1 {
 
 	*/
 public:
-	P1() {
+	P01() {
 
 	}
 };
