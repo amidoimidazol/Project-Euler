@@ -15,4 +15,10 @@ https://projecteuler.net/
 
 Use
 -----
-Change problems.h
+Change project_euler.cpp
+
+You can specify the problem like
+
+````cpp
+P12();
+````
