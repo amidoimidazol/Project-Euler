@@ -22,3 +22,5 @@ You can specify the problem like
 ````cpp
 P12();
 ````
+
+Each problem is numbered, just like on the project website.
