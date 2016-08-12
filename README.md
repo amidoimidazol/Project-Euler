@@ -12,7 +12,7 @@ https://projecteuler.net/
 * Problem 10 - Summation of Primes
 * Problem 11 - Largest product in a grid
 * Problem  12 - Highly divisible triangular number
-* 
-#Use
+
+Use
 -----
 Change problems.h
