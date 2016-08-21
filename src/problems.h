@@ -191,7 +191,7 @@ public:
 	vector<vector<int>> create_matrix() {
 		// Reading in the numbers into a matrix
 		int num;
-		ifstream file("data/p11.txt");
+		ifstream file("../data/p11.txt");
 		for (int i = 0; i < length_of_rows; ++i) {
 			vector<int> row;
 			for (int j = 0; j < length_of_rows; ++j) {
@@ -449,7 +449,7 @@ public:
 		// Reading in the number from a file
 		vector<int>numbers;
 		string line;
-		ifstream myfile{ "data/p8.txt" };
+		ifstream myfile{ "../data/p8.txt" };
 
 		while (getline(myfile, line)) {
 			for (char i : line) {
