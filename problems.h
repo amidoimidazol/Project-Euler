@@ -104,8 +104,8 @@ public:
 
 		for (unsigned long long i = 1;; i += increment++) {
 			int divnum = 0;
-			int index = 0;
-			int sum = 0;
+			int index  = 0;
+			int sum    = 0;
 			unsigned long long sqroot = sqrt(i);
 
 			for (unsigned long long j = 1; j <= sqroot; j++) {
@@ -171,7 +171,7 @@ class P11 {
 	*/
 public:
 	const int adjecent_elements = 4;
-	const int length_of_rows = 20;
+	const int length_of_rows    = 20;
 	vector<vector<int>> matrix;
 	unsigned long long int biggest_product = 1;
 	
@@ -191,7 +191,7 @@ public:
 	vector<vector<int>> create_matrix() {
 		// Reading in the numbers into a matrix
 		int num;
-		ifstream file("Database/p11.txt");
+		ifstream file("data/p11.txt");
 		for (int i = 0; i < length_of_rows; ++i) {
 			vector<int> row;
 			for (int j = 0; j < length_of_rows; ++j) {
@@ -449,7 +449,7 @@ public:
 		// Reading in the number from a file
 		vector<int>numbers;
 		string line;
-		ifstream myfile{ "Database/p8.txt" };
+		ifstream myfile{ "data/p8.txt" };
 
 		while (getline(myfile, line)) {
 			for (char i : line) {
@@ -497,10 +497,9 @@ public:
 	P07(){
 
 		int last_prime;
-		int treshold = 10001;
+		int treshold     = 10001;
 		int primes_found = 0;
-
-		int i = 2;
+		int i            = 2;
 		while (primes_found != treshold) {
 			int j = 2;
 			while (j <= i) {
@@ -541,8 +540,8 @@ class P06 {
 public:
 	P06() {
 		float sum_of_squares = get_sum_of_squares(100);
-		float square_of_sum = get_square_of_sum(100);
-		int result = square_of_sum - sum_of_squares;
+		float square_of_sum  = get_square_of_sum(100);
+		int result           = square_of_sum - sum_of_squares;
 		cout << "sum of squares " << sum_of_squares << endl;
 		cout << "square of sum " << square_of_sum << endl;
 		cout << "result " << result << endl;
